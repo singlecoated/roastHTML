@@ -57,8 +57,10 @@ roastHtmlDETable <- function(mygs,gs,i,org,geneid,detable,filename,dirname,strip
             {
                 if ((nrow(mygs$res))>0)
                     {
-                        intgenes <- intersect(as.character(detable$symbol),as.character(mygs$index[[j]]))
-                        xout <- detable[detable$symbol %in% intgenes,]
+                        ##intgenes <- intersect(as.character(detable$symbol),as.character(mygs$index[[j]]))
+                        intgenes <- intersect(as.character(detable[,geneid]),as.character(mygs$index[[j]]))
+                        ##xout <- detable[detable$symbol %in% intgenes,]
+                        xout <- detable[detable[,geneid] %in% intgenes,]  
                         selcols <- c(colnames(xout)[1:4],'baseMean','log2FoldChange','stat','pvalue','padj','rej')
                         xout <- xout[,selcols]
                         xout <- xout[order(abs(xout$stat),decreasing=TRUE),]
