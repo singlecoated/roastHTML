@@ -79,15 +79,20 @@ roastHtmlDETable <- function(mygs,gs,i,org,geneid,detable,filename,dirname,strip
                         ## gene id link by species
                         if (org=='mouse')
                         {
-                            xout[,geneid] <- sprintf('<a href="http://www.informatics.jax.org/quicksearch/summary?queryType=exactPhrase&query=%s&submit=Quick+Search">%s</a>',xout[,geneid],xout[,geneid])
+                            ##xout[,geneid] <- sprintf('<a href="http://www.informatics.jax.org/quicksearch/summary?queryType=exactPhrase&query=%s&submit=Quick+Search">%s</a>',xout[,geneid],xout[,geneid])
+                            xout[,geneid] <- sprintf('<a href="https://www.ensembl.org/Mus_musculus/Search/Results?q=%s;facet_feature_type=;site=ensembl;facet_species=Mouse">%s</a>',xout[,geneid],xout[,geneid])
+                        
                         }
                         else if (org=='human')
                             {
-                                xout[,geneid] <- sprintf('<a href="http://www.informatics.jax.org/quicksearch/summary?queryType=exactPhrase&query=%s&submit=Quick+Search">%s</a>',xout[,geneid],xout[,geneid])
+                                ##xout[,geneid] <- sprintf('<a href="http://www.informatics.jax.org/quicksearch/summary?queryType=exactPhrase&query=%s&submit=Quick+Search">%s</a>',xout[,geneid],xout[,geneid])
+                                xout[,geneid] <- sprintf('<a href="https://www.ensembl.org/Human/Search/Results?q=%s;facet_feature_type=;site=ensembl;facet_species=Human">%s</a>',xout[,geneid],xout[,geneid])
+                        
                             }
                         else if (org=='fly')
                         {
-                            xout[,geneid] <- sprintf('<a href="http://www.informatics.jax.org/quicksearch/summary?queryType=exactPhrase&query=%s&submit=Quick+Search">%s</a>',xout[,geneid],xout[,geneid])
+                            ##xout[,geneid] <- sprintf('<a href="http://www.informatics.jax.org/quicksearch/summary?queryType=exactPhrase&query=%s&submit=Quick+Search">%s</a>',xout[,geneid],xout[,geneid])
+                            xout[,geneid] <- sprintf('https://www.ensembl.org/Fruit%20fly/Search/Results?q=%s;site=ensembl;facet_feature_type=;facet_species=Fruit%20fly">%s</a>',xout[,geneid],xout[,geneid])
                         }
                         fout <- file.path(outdir, sprintf('%s_genes.html',j))
                         title <- sprintf('<center><h4>%s | %s: Genes in pathway %s\n Differential expression results</h4></center></p>',gs,i,j)
